@@ -1,5 +1,4 @@
 AddEventHandler("playerConnecting", function(name, setReason)
-
 	log("DEBUG", Config.Messages.AceCheck, name, source)
 
 	if IsPlayerAceAllowed(source, Config.AllowAce) then
@@ -7,6 +6,8 @@ AddEventHandler("playerConnecting", function(name, setReason)
 		return
 	end
 
+	-- A list of unique entries to be collected from the connecting user.
+	-- This used if they fail to connect as part of the warning further down.
 	local services = {}
 
 	if Config.AllowGuests then
@@ -18,7 +19,7 @@ AddEventHandler("playerConnecting", function(name, setReason)
 			log("DEBUG", Config.Messages.GuestIdentifier, name, source, service, identifier)
 
 			if table.includes(Config.Guests, identifiers[index]) then
-				log("INFO", Config.Messages.GuestAccept, name, source, service, identifier)
+				log("INFO", Config.Messages.GuestAccept, name, source, service)
 				return
 			end
 
@@ -37,21 +38,14 @@ LogLevels = {
 	["DEBUG"] = 1,
 	["INFO"] = 2,
 	["WARN"] = 3,
-	["ERROR"] = 4,
-	["NONE"] = 5
-}
-
-local LogColors = {
-    ["DEBUG"] = 6,
-	["INFO"] = 4,
-	["WARN"] = 3,
-	["ERROR"] = 1,
-	-- ["NONE"] = 5 -- never reaches here
+	["ERROR"] = 4
 }
 
 function log(level, ...)
+	-- if nil, don't log anything (equivalent to NONE if it were still a log level)
+	if LogLevels[Config.LogLevel] == nil then return end
 	if (LogLevels[Config.LogLevel] or LogLevels["WARN"]) <= LogLevels[level] then
-        local prefix = "^" .. LogColors[level] .. "[" .. level .. "]^7"
+  	local prefix = "^" .. (Config.LogColors[level] or 7) .. "[" .. level .. "]^7"
 		print(prefix, string.format(...))
 	end
 end
