@@ -44,7 +44,7 @@ This resource accepts any identifier provided to it via the joining player. This
 - `xbl:12345678901234567890` - Numeric integer
 - `live:12345678901234567890` - Numeric integer
 - `fivem:1234567890` - Numeric integer, your [`forum.cfx.re`](https://forum.cfx.re) id
-- `ip` - [Connecting address](https://en.wikipedia.org/wiki/IP_address)
+- `ip:127.0.0.1` - [Connecting address](https://en.wikipedia.org/wiki/IP_address)
 
 > These are the same identifiers you would provide to the `add_ace` or `add_principal` config command (see [access control commands (FiveM Docs)](https://docs.fivem.net/docs/server-manual/server-commands/#access-control-commands)).
 
