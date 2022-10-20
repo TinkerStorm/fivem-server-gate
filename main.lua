@@ -24,7 +24,7 @@ AddEventHandler("playerConnecting", function(name, setReason)
 			end
 
 			if not table.includes(services, service) then
-				services[#services + 1] = service
+				table.insert(services, service)
 			end
 		end
 	end
@@ -63,8 +63,8 @@ end
 function splitIdentifier(fragment)
 	local index, _ = string.find(fragment, ":")
     
-    local service = string.sub(fragment, 0, index - 1)
-    local identifier = string.sub(fragment, index + 1, #fragment)
+  local service = string.sub(fragment, 0, index - 1)
+  local identifier = string.sub(fragment, index + 1, #fragment)
     
 	return service, identifier
 end

@@ -8,11 +8,6 @@ Config = {
         -- "live:???????????????",
         -- "discord:12345678901234567890",
         -- "ip:127.0.0.1",
-        "steam:1100001026cba0c", -- Cobra
-        "steam:110000111344e28", -- Techman
-        "steam:1100001030a852d", -- Mek
-        "steam:110000115fcf277", -- Timo
-        "steam:110000104218f24", -- Lazlo
     },
     LogLevel = "DEBUG",
     LogColors = {
